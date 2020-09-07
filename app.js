@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const controller = require('./src/main/controllers/controller')
+const messagingServiceController = require('./src/main/controllers/messagingServiceController')
 const app = express();
 const {debuglog} = require('./src/main/util/debugCommands');
 const ENV = process.env.ENV;
@@ -43,6 +44,7 @@ app.get('/', (req, res) =>{
 })
 
 app.use('/controller', controller)
+app.use('/messaging-service', messagingServiceController)
 
 
 module.exports = app;
