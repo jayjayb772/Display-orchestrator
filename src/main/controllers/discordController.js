@@ -1,4 +1,7 @@
 const express = require('express');
+const {determineText} = require("../services/messagingService");
+const {displayNewMessage} = require("../services/displayService");
+const {discordMessageDisplayDTO} = require("../DataObjects/discordMessageDisplayDTO");
 const {discordCommandHandler} = require("../services/discordService");
 const {debuglog} = require("../util/debugCommands");
 const discordController = express.Router()
@@ -52,6 +55,79 @@ discordController.post('/discord-command', (req, res) =>{
     discordCommandHandler(req.body)
     res.status(200).send()
 })
+
+/**
+ * @swagger
+ *
+ * /discord/display-message:
+ *   post:
+ *     description: handles commands from discord
+ *     consumes:
+ *         - application/json
+ *     parameters:
+ *         - in: body
+ *           name: body
+ *           description: body
+ *           schema:
+ *              type: object
+ *              properties:
+ *                  cmd:
+ *                      type: string
+ *                  message:
+ *                      type: string
+ *                  from:
+ *                      type: string
+ *     responses:
+ *       200:
+ *         description: receive commands from discord server and handle them
+ */
+discordController.post('/display-message', (req, res) =>{
+    debuglog(req.body);
+    debuglog("Message!")
+    displayNewMessage(discordMessageDisplayDTO(req.body))
+    res.status(200).send()
+})
+
+/**
+ * @swagger
+ *
+ * /discord/display-message:
+ *   post:
+ *     description: handles commands from discord
+ *     consumes:
+ *         - application/json
+ *     parameters:
+ *         - in: body
+ *           name: body
+ *           description: body
+ *           schema:
+ *              type: object
+ *              properties:
+ *                  cmd:
+ *                      type: string
+ *                  message:
+ *                      type: string
+ *                  from:
+ *                      type: string
+ *                  to:
+ *                      type: string
+ *                  relationship:
+ *                      type: string
+ *     responses:
+ *       200:
+ *         description: receive commands from discord server and handle them
+ */
+discordController.post('/send-text', (req, res) =>{
+    debuglog(req.body);
+    debuglog("sending text!")
+    determineText(req.body).then(r=>{
+        res.status(200).send()
+    }).catch(err=>{
+        res.status(400).send(err)
+    })
+
+})
+
 
 
 module.exports = discordController;

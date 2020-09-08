@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const discordController = require("./src/main/controllers/discordController");
+const googleHomeController = require("./src/main/util/googleHomeController");
 const options = {
     definition: {
         openapi: '3.0.0', // Specification (optional, defaults to swagger: '2.0')
@@ -47,5 +48,6 @@ app.get('/', (req, res) =>{
 app.use('/controller', controller)
 app.use('/messaging-service', messagingServiceController)
 app.use('/discord', discordController)
+app.use('/google-home', googleHomeController)
 
 module.exports = app;
