@@ -1,4 +1,5 @@
 const express = require('express');
+const {getTrainByStationAndColor} = require("../services/ctaService");
 const {determineText} = require("../services/messagingService");
 const {displayNewMessage} = require("../services/displayService");
 const {discordMessageDisplayDTO} = require("../DataObjects/discordMessageDisplayDTO");
@@ -124,6 +125,16 @@ discordController.post('/send-text', (req, res) =>{
         res.status(200).send()
     }).catch(err=>{
         res.status(400).send(err)
+    })
+
+})
+
+discordController.get('/train-times', (req, res)=>{
+    getTrainByStationAndColor(req.query.name, req.query.color).then(r => {
+        res.send(r);
+    }).catch(err=>{
+        res.send(err).status(500);
+
     })
 
 })
