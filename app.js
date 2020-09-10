@@ -10,6 +10,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const discordController = require("./src/main/controllers/discordController");
 const googleHomeController = require("./src/main/util/googleHomeController");
+const CTAController = require("./src/main/controllers/CTAController");
 const options = {
     definition: {
         openapi: '3.0.0', // Specification (optional, defaults to swagger: '2.0')
@@ -48,6 +49,7 @@ app.get('/', (req, res) =>{
 app.use('/controller', controller)
 app.use('/messaging-service', messagingServiceController)
 app.use('/discord', discordController)
+app.use('/cta', CTAController)
 app.use('/google-home', googleHomeController)
 
 module.exports = app;
