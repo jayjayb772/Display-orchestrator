@@ -6,7 +6,7 @@ function sendDiscordMessage(reqBody){
         let msg = {
                         "content": `${reqBody.message}`
                   }
-        request.post(`${process.env.discordWebhookUrl}`, JSON.stringify(msg), (err,res)=>{
+        request.post(`${process.env.discordWebhookUrl}`, msg, (err,res)=>{
             if(err){
                 reject(err);
             }
