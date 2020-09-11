@@ -6,7 +6,7 @@ function options(body) {
         "headers": {
             "content-type": "application/json"
         },
-        "body": body
+        "body": JSON.stringify(body)
     }
 }
 function sendDiscordMessage(reqBody, resA){
@@ -16,7 +16,7 @@ function sendDiscordMessage(reqBody, resA){
                   }
         request.post(`${process.env.discordWebhookUrl}`, options(reqBody), (err,res)=>{
             if(err){
-                reject(err);
+                reject(resA.send(err).status(500));
             }
             resolve(resA.send(res));
         })
