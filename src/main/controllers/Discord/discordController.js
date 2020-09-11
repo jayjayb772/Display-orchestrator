@@ -1,8 +1,5 @@
 const express = require('express');
 const {sendDiscordMessage} = require("./discordService");
-const {displayNewMessage} = require("../../services/displayService");
-const {discordMessageDisplayDTO} = require("./discordMessageDisplayDTO");
-const {discordCommandHandler} = require("./discordService");
 const {debuglog} = require("../../util/debugCommands");
 const discordController = express.Router()
 
