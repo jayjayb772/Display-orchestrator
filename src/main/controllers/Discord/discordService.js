@@ -2,11 +2,12 @@ const {debuglog} = require("../../util/debugCommands");
 const request = require('request')
 
 function options(body) {
+    let a = JSON.stringify(body)
     return {
         "headers": {
             "content-type": "application/json"
         },
-        "body": JSON.stringify(body)
+        "body": a
     }
 }
 function sendDiscordMessage(reqBody, resA){
@@ -14,9 +15,12 @@ function sendDiscordMessage(reqBody, resA){
         let msg = {
                         "content": `${reqBody.message}`
                   }
-        request.post(`${process.env.discordWebhookUrl}`, options(reqBody), (err,res)=>{
+        request.post(`${process.env.discordWebhookUrl}`,options(msg), (err,res)=>{
             if(err){
                 reject(resA.send(err).status(500));
+            }
+            if(res.status!==200){
+                reject(resA.send(res).status(res.status))
             }
             resolve(resA.send(res));
         })
