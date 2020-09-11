@@ -1,6 +1,6 @@
 const {debuglog} = require("../../util/debugCommands");
 const request = require('request')
-function sendDiscordMessage(reqBody, res){
+function sendDiscordMessage(reqBody, resA){
     debuglog(reqBody);
     return new Promise(((resolve, reject) => {
         let msg = {
@@ -10,7 +10,7 @@ function sendDiscordMessage(reqBody, res){
             if(err){
                 reject(err);
             }
-            resolve(res.send(res));
+            resolve(resA.send(res));
         })
     }))
     return;
