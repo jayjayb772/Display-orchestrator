@@ -28,6 +28,7 @@ discordController.post('/send-message', (req, res) => {
     res.send(req);
 }catch(err){
 res.send(err).status(500);
+}
 })
 
 
