@@ -21,11 +21,13 @@ discordController.get('/', (req, res) => {
 })
 
 discordController.post('/send-message', (req, res) => {
+    try{
     debuglog("discordController home")
-    let b = req.body
-    debuglog(b)
-    sendDiscordMessage(b)
+    debuglog(req.body)
+    sendDiscordMessage(req.body)
     res.send(req);
+}catch(err){
+res.send(err).status(500);
 })
 
 
