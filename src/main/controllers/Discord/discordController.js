@@ -22,9 +22,9 @@ discordController.get('/', (req, res) => {
 
 discordController.post('/send-message', (req, res) => {
     debuglog("discordController home")
-    let b = JSON.stringify(req.body)
+    let b = req.body
     debuglog(b)
-    sendDiscordMessage(JSON.parse(b))
+    sendDiscordMessage(b)
     res.send(req);
 })
 
