@@ -1,16 +1,18 @@
 require('dotenv').config();
 const express = require('express');
-const controller = require('./src/main/controllers/controller')
-const messagingServiceController = require('./src/main/controllers/messagingServiceController')
+const controller = require('./src/main/controllers/zzz-template/controller')
+const messagingServiceController = require('./src/main/controllers/MessagingService/messagingServiceController')
 const app = express();
 const {debuglog} = require('./src/main/util/debugCommands');
 const ENV = process.env.ENV;
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
-const discordController = require("./src/main/controllers/discordController");
-const googleHomeController = require("./src/main/util/googleHomeController");
-const CTAController = require("./src/main/controllers/CTAController");
+const discordController = require("./src/main/controllers/Discord/discordController");
+const googleHomeController = require("./src/main/controllers/GoogleHome/googleHomeController");
+const CTAController = require("./src/main/controllers/CTA/CTAController");
+const weatherController = require("./src/main/controllers/Weather/weatherController");
+//const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
 const options = {
     definition: {
         openapi: '3.0.0', // Specification (optional, defaults to swagger: '2.0')
@@ -20,7 +22,7 @@ const options = {
         },
     },
     // Path to the API docs
-    apis: ['./src/main/controllers/*.js'],
+    apis: ['./src/main/zzz-template/*.js'],
 };
 const swaggerSpec = swaggerJSDoc(options);
 
@@ -46,10 +48,12 @@ app.get('/', (req, res) =>{
     res.send("Hello World!");
 })
 
-app.use('/controller', controller)
+app.use('/zzz-template', controller)
 app.use('/messaging-service', messagingServiceController)
 app.use('/discord', discordController)
 app.use('/cta', CTAController)
 app.use('/google-home', googleHomeController)
+app.use('/weather', weatherController)
+//app.use('/display-chat', displayChatController)
 
 module.exports = app;

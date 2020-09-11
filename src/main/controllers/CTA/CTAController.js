@@ -1,6 +1,6 @@
 const express = require('express');
-const {getTrainByStationAndColor} = require("../services/ctaService");
-const {debuglog} = require("../util/debugCommands");
+const {getTrainByStationAndColor} = require("./ctaService");
+const {debuglog} = require("../../util/debugCommands");
 const CTAController = express.Router()
 
 CTAController.get('/train-times', (req, res)=>{
