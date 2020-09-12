@@ -19,10 +19,10 @@ function sendDiscordMessage(reqBody, resA){
             if(err){
                 reject(resA.send(err).status(500));
             }
-            if(res.status!==204){
-                reject(resA.send(res).status(res.status))
+            if(res.statusCode!==204){
+                reject(resA.send(res).status(res.statusCode))
             }
-            resolve(resA.send(res).status(res.status));
+            resolve(resA.send(res).status(res.statusCode));
         })
     }))
     return;
