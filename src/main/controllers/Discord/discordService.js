@@ -10,8 +10,8 @@ function options(body) {
         "body": a
     }
 }
-function sendDiscordMessage(reqBody, resA){
-    return new Promise(((resolve, reject) => {
+async function sendDiscordMessage(reqBody, resA){
+    return new Promise(await ((resolve, reject) => {
         let msg = {
                         "content": `${reqBody.message}`
                   }
@@ -19,10 +19,11 @@ function sendDiscordMessage(reqBody, resA){
             if(err){
                 reject(resA.send(err).status(500));
             }
+            debuglog(res.statusCode)
             if(res.statusCode!==204){
-                reject(resA.send(res).status(res.statusCode))
+                reject(res.statusCode, res.body)
             }
-            resolve(resA.send("success!").status(res.statusCode));
+            resolve(res);
         })
     }))
     return;

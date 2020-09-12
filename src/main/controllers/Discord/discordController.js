@@ -24,9 +24,13 @@ discordController.post('/send-message', (req, res) => {
     try{
         debuglog("discordController home")
         debuglog(req.body)
-        sendDiscordMessage(req.body, res)
+        sendDiscordMessage(req.body).then((mRes)=>{
+            res.send("Success!").status(mRes.statusCode)
+        }, (eStat, err)=>{
+            res.send(err).status(eStat)
+        })
     }catch(err){
-        res.send(err).status(500);
+        res.send().error();
     }
 })
 
