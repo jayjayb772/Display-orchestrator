@@ -1,6 +1,6 @@
 const request = require('request');
 
-async function getTrainByStationAndColor(stationName, color){
+function getTrainByStationAndColor(stationName, color){
         let url = `${process.env.CTAPI_URL}/orchestrator/train-times?name=${stationName}&color=${color}`;
         request.get(url, (err,res)=>{
             if(err){
@@ -8,7 +8,6 @@ async function getTrainByStationAndColor(stationName, color){
             }
             return(res.body);
         })
-
 }
 
 module.exports = {getTrainByStationAndColor}
