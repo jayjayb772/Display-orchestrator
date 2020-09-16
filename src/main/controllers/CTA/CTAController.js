@@ -5,7 +5,8 @@ const CTAController = express.Router()
 
 CTAController.get('/train-times', (req, res)=>{
     getTrainByStationAndColor(req.query.name, req.query.color).then(r => {
-        res.send(r).header("Content-type", "application/json").header("Access-Control-Allow-Origin", "*");
+        res.header("Content-type", "application/json").header("Access-Control-Allow-Origin", "*");
+        res.send(r);
     }).catch(err=>{
         console.log(err)
         res.send(err).status(500);
