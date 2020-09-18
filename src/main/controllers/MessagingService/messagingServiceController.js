@@ -62,6 +62,8 @@ messagingServiceController.post('/send-text', (req, res) =>{
 
 messagingServiceController.post('/incoming-message', ((req, res) => {
     debuglog(req)
+    console.log(req);
+    console.log("HERE");
     //send message to messaging-service
     //wait for response
     //handle response
