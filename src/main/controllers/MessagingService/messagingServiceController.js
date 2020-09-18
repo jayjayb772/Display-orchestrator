@@ -57,18 +57,10 @@ messagingServiceController.post('/send-text', (req, res) =>{
     }).catch(err=>{
         res.status(400).send(err)
     })
-
 })
 
 messagingServiceController.post('/incoming-message', ((req, res) => {
-    debuglog(req)
-    console.log(req);
-    console.log(JSON.parse(req.body))
-    console.log("HERE");
-    //send message to messaging-service
-    //wait for response
-    //handle response
-    res.send("ok").ok
+    res.send("depreciated").ok
 }))
 
 
