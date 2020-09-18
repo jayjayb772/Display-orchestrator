@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const controller = require('./src/main/controllers/zzz-template/controller')
-const messagingServiceController = require('./src/main/controllers/MessagingService/messagingServiceController')
+const messagingServiceController = require("./src/main/controllers/MessagingService/messagingServiceController")
 const app = express();
 const {debuglog} = require('./src/main/util/debugCommands');
 const ENV = process.env.ENV;
