@@ -60,5 +60,13 @@ messagingServiceController.post('/send-text', (req, res) =>{
 
 })
 
+messagingServiceController.post('/incoming-text', ((req, res) => {
+    debuglog(req)
+    //send message to messaging-service
+    //wait for response
+    //handle response
+    res.send("ok").ok
+}))
+
 
 module.exports = messagingServiceController;

@@ -49,7 +49,6 @@ app.get('/', (req, res) =>{
     res.send("Hello World!");
 })
 
-app.use('/zzz-template', controller)
 app.use('/messaging-service', messagingServiceController)
 app.use('/discord', discordController)
 app.use('/cta', CTAController)
