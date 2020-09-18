@@ -60,7 +60,7 @@ messagingServiceController.post('/send-text', (req, res) =>{
 
 })
 
-messagingServiceController.post('/incoming-text', ((req, res) => {
+messagingServiceController.post('/incoming-message', ((req, res) => {
     debuglog(req)
     //send message to messaging-service
     //wait for response
