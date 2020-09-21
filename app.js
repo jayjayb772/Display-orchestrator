@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const controller = require('./src/main/controllers/zzz-template/controller')
-const messagingServiceController = require("./src/main/controllers/MessagingService/messagingServiceController")
+const messagingServiceController = require("./src/main/controllers/MessagingService/subscriptionController")
 const app = express();
 const {debuglog} = require('./src/main/util/debugCommands');
 const ENV = process.env.ENV;
@@ -12,6 +12,7 @@ const discordController = require("./src/main/controllers/Discord/discordControl
 const googleHomeController = require("./src/main/controllers/GoogleHome/googleHomeController");
 const CTAController = require("./src/main/controllers/CTA/CTAController");
 const weatherController = require("./src/main/controllers/Weather/weatherController");
+const subscriptionHandler = require("./src/main/subscriptionHandler");
 //const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
 const options = {
     definition: {
@@ -55,5 +56,8 @@ app.use('/cta', CTAController)
 app.use('/google-home', googleHomeController)
 app.use('/weather', weatherController)
 //app.use('/display-chat', displayChatController)
+
+app.post("/subscription", subscriptionHandler.handlePushNotificationSubscription);
+app.get("/subscription/:id", subscriptionHandler.sendPushNotification);
 
 module.exports = app;

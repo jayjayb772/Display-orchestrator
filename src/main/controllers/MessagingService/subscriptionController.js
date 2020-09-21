@@ -1,7 +1,7 @@
 const express = require('express');
-const {determineText} = require("./messagingService");
+const {determineText} = require("./subscriptionService");
 const {debuglog} = require("../../util/debugCommands");
-const messagingServiceController = express.Router()
+const subscriptionController = express.Router()
 
 /**
  * @swagger
@@ -15,7 +15,7 @@ const messagingServiceController = express.Router()
  *       200:
  *         description: send a text
  */
-messagingServiceController.get('/', (req, res) => {
+subscriptionController.get('/', (req, res) => {
     debuglog("messaging zzz-template home")
     res.send("messaging zzz-template home");
 })
@@ -49,19 +49,19 @@ messagingServiceController.get('/', (req, res) => {
  *       200:
  *         description: receive commands from discord server and handle them
  */
-messagingServiceController.post('/send-text', (req, res) =>{
+subscriptionController.post('/subscription', (req, res) =>{
     debuglog(req.body);
-    debuglog("sending text!")
-    determineText(req.body).then(r=>{
-        res.status(200).send()
-    }).catch(err=>{
-        res.status(400).send(err)
-    })
+    debuglog("Got subscription")
+    res.send("ok").ok;
 })
 
-messagingServiceController.post('/incoming-message', ((req, res) => {
+subscriptionController.get('/subscription', ((req, res) => {
     res.send("depreciated").ok
 }))
 
+subscriptionController.post('/send-notification', ((req, res) => {
+    res.send("ok");
+}))
 
-module.exports = messagingServiceController;
+
+module.exports = subscriptionController;
