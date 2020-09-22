@@ -6,6 +6,9 @@
 const app = require('../app');
 const debug = require('debug')('nodeselector:server');
 const http = require('http');
+const echo = require('../sock');
+
+
 
 /**
  * Get port from environment and store in Express.
@@ -13,15 +16,16 @@ const http = require('http');
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+
 /**
  * Create HTTP server.
  */
 const server = http.createServer(app);
+echo.installHandlers(server);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
