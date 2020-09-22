@@ -35,6 +35,15 @@ discordController.post('/send-message', (req, res) => {
     }
 })
 
+discordController.post('/display-message', (req, res) => {
+    try{
+
+
+    }catch(err){
+        res.send.error(err)
+    }
+})
+
 
 
 
