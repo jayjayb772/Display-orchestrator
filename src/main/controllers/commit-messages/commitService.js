@@ -1,10 +1,6 @@
 const request = require('request')
 
-async function parseMessage(bodyIn) {
-    let body = await JSON.parse(bodyIn)
-    console.log(bodyIn)
-    return new Promise(await ((resolve, reject) => {
-        try {
+async function parseMessage(body) {
             console.log(body)
             let message = {}
             let options = {
@@ -24,13 +20,9 @@ async function parseMessage(bodyIn) {
 
             request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res) => {
                 console.log(res)
-                resolve(res)
+                return res
             })
-        }catch(err){
-            console.log(err);
-            reject(err)
-        }
-    }))
+
 }
 
 module.exports = {parseMessage}
