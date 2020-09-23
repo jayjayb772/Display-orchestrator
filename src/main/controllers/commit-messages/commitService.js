@@ -2,20 +2,20 @@ const request = require('request')
 
 async function parseMessage(body) {
             console.log(body)
-            let message = {}
+            let message = JSON.stringify({
+                "content": "New Commit",
+                "embeds": [{
+                    'title': `${body.commits[0].message}`,
+                    'description': `Modified Repo: ${body.repository.name}`,
+                    'url': `${body.html_url}`,
+                    'color': "#FF0000"
+                }]
+            })
             let options = {
                 "headers": {
                     "Content-type": "application/json"
                 },
-                "body": {
-                    "content": "New Commit",
-                    "embeds": [{
-                        'title': `${body.commits[0].message}`,
-                        'description': `Modified Repo: ${body.repository.name}`,
-                        'url': `${body.html_url}`,
-                        'color': "#FF0000"
-                    }]
-                }
+                "body": message
             }
 
             request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res) => {
