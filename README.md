@@ -42,9 +42,32 @@ Because I never found a display board with enough customizability for me. Also I
             - Response: Array of JSON Objects, 200 OKAY
     ---
 ---           
-- ~~_DiscordController_~~
-    - **reconsidering Discord controller due to new commit controller**
-    - ~~path: {{baseURL}}/discord~~
+- _DiscordController_
+    - {{baseURL}}/**discord**
+    ___
+        - {{baseURL}}/discord/push-event
+            - Method: POST
+            - Body: JSON OBJECT, sent from Github
+                - Required Params:
+                    - body.repository.name
+                    - body.commits[0].message
+                    - body.repository.url
+                - Optional Params:
+                    - body.commits[0].removed
+                    - body.commits[0].added
+                    - body.commits[0].modified
+                    - body.head_commit.url
+            - Response: 200 OKAY
+    ___
+    ___
+        - {{baseURL}}/discord/display-error
+            - Method: POST
+            - Body: JSON OBJECT, sent from Github
+                - Required Params:
+                    - body
+            - Error sent from webpage to discord for review
+            - Response: 200 OKAY
+    ___
 ---
 - **_WeatherController_**
     - {{baseURL}}/**weather**
