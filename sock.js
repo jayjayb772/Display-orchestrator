@@ -1,24 +1,27 @@
 const express = require('express');
 const sockjs = require('sockjs');
-const clients=[]
-const echo = sockjs.createServer({ prefix:'/websocket' });
+let clients=[]
+const echo = sockjs.createServer({ prefix:'/websocket', heartbeat_delay:5000, disconnect_delay:120000});
 echo.on('connection', function(conn) {
     clients.push(conn)
     //console.log("New connection")
     //console.log(conn)
     conn.on('data', function(message) {
-
         clients.forEach(c=>{
-            c.write(message)
+            if(c.readyState === 1) {
+                c.write(message)
+                console.log(`wrote message to ${c.url}`)
+            }
         })
         console.log('message recieved')
         //console.log(message)
 
     });
 
-    conn.on('close', function(con) {
-        //console.log("Close Connection")
-        clients.filter(c=> c !== con)
+    conn.on('close', function() {
+        console.log(`clients length = ${clients.length}`)
+        clients = clients.filter(conn => conn.readyState <=1)
+        console.log(`clients length = ${clients.length}`)
     });
 });
 
