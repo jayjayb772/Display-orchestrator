@@ -81,7 +81,7 @@ async function commitMessage(body) {
     let embeds = determineEmbeds(body);
     let message = JSON.stringify({
         "content": `New Commit in ${body.repository.name}`,
-        "embeds": embeds
+        "embeds": [embeds]
     })
     let options = {
         "headers": {
