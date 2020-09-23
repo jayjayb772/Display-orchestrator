@@ -7,13 +7,16 @@ echo.on('connection', function(conn) {
     //console.log("New connection")
     //console.log(conn)
     conn.on('data', function(message) {
+        if(message!== "test" && message!== "stay alive"){
         clients.forEach(c=>{
             if(c.readyState === 1) {
                 c.write(message)
-                console.log(`wrote message to ${c.url}`)
+                console.log(`wrote message ${message} to ${c.url}`)
             }
         })
-        console.log('message recieved')
+        console.log('message received')
+        }
+        console.log("test received");
         //console.log(message)
 
     });
