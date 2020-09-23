@@ -8,6 +8,7 @@ function parseMessage(body) {
             "Content-type": "application/json"
         },
         body: JSON.stringify({
+            content:"New Commit",
             embeds: [{
                 'title': `${body.commits[0].message}`,
                 'description': `Modified Repo: ${body.repository.name}`,
@@ -16,6 +17,7 @@ function parseMessage(body) {
             }]
         }),
         content: JSON.stringify({
+            content:"New Commit",
             embeds: [{
                 'title': `${body.commits[0].message}`,
                 'description': `Modified Repo: ${body.repository.name}`,
