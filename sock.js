@@ -23,6 +23,9 @@ echo.on('connection', function(conn) {
 
     conn.on('close', function() {
         console.log(`clients length = ${clients.length}`)
+        clients.forEach(c=>{
+            console.log(`Client url: ${c.url} \n Client ready state: ${c.readyState}`)
+        })
         clients = clients.filter(conn => conn.readyState <= 1)
         console.log(`clients length = ${clients.length}`)
     });
