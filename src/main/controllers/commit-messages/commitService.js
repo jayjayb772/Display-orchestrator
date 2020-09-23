@@ -7,14 +7,14 @@ function parseMessage(body) {
         headers: {
             "Content-type": "application/json"
         },
-        content: {
+        content: JSON.stringify({
             embed: {
-                title: `${body.commits[0].message}`,
-                description: `Modified Repo: ${body.repository.name}`,
-                url: `${body.html_url}`,
-                color: "#FF0000"
+                'title': `${body.commits[0].message}`,
+                'description': `Modified Repo: ${body.repository.name}`,
+                'url': `${body.html_url}`,
+                'color': "#FF0000"
             }
-        }
+        })
     }
 
     request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res) => {
