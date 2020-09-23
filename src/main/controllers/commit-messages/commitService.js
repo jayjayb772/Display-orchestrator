@@ -13,7 +13,7 @@ function parseMessage(body){
         headers:{
             "Content-type":"application/json"
         },
-        body:JSON.stringify(message)
+        content:JSON.stringify(message)
     }
 
 request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res)=>{
