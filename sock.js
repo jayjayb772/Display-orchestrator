@@ -16,7 +16,7 @@ echo.on('connection', function(conn) {
         })
         console.log('message received')
         }
-        console.log("test received");
+        console.log(`test \"${message}\" received`);
         //console.log(message)
 
     });
