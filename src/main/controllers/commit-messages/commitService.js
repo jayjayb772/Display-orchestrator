@@ -1,9 +1,10 @@
 const request = require('request')
 
-async function parseMessage(body) {
+async function parseMessage(bodyIn) {
     return new Promise(await ((resolve, reject) => {
         try {
-            console.log(JSON.stringify(body))
+            let body = JSON.parse(bodyIn)
+            console.log(body)
             let message = {}
             let options = {
                 headers: {
