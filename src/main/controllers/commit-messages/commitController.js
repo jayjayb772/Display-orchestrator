@@ -19,7 +19,7 @@ commitController.post('/push-event', (req, res) => {
     parseMessage(req.body).then(discordRes=>{
         res.send(discordRes).ok;
     }).catch(err=>{
-        res.send(err).error();
+        res.send(err);
     });
     debuglog("push event")
 
