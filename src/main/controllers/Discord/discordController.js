@@ -48,8 +48,9 @@ discordController.post('/push-event', async (req, res) => {
 })
 
 discordController.post('/display-error', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "*")
+
     sendError(req.body).then(discordRes=>{
+        res.header("Access-Control-Allow-Origin", "*").header("Content-type", "application/json")
         res.send(discordRes).ok;
     }).catch(err=>{
         res.send(err);
