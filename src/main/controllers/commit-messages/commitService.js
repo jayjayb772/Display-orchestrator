@@ -13,7 +13,7 @@ async function parseMessage(body) {
             })
             let options = {
                 "headers": {
-                    "Content-type": "application/json"
+                    "content-type": "application/json"
                 },
                 "body": message
             }
