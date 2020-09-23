@@ -15,6 +15,7 @@ echo.on('connection', function(conn) {
         //console.log(message)
 
     });
+
     conn.on('close', function(con) {
         //console.log("Close Connection")
         clients.filter(c=> c !== con)
