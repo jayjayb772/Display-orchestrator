@@ -13,7 +13,6 @@ const googleHomeController = require("./src/main/controllers/GoogleHome/googleHo
 const CTAController = require("./src/main/controllers/CTA/CTAController");
 const weatherController = require("./src/main/controllers/Weather/weatherController");
 const sockjs = require('sockjs');
-const commitController = require("./src/main/controllers/commit-messages/commitController");
 //const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
 const options = {
     definition: {
