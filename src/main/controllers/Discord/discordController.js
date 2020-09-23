@@ -20,7 +20,7 @@ discordController.get('/', (req, res) => {
     res.send("discordController home");
 })
 
-discordController.post('/send-message', (req, res) => {
+discordController.post('/send-message', async (req, res) => {
     try{
         debuglog("discordController home")
         debuglog(req.body)

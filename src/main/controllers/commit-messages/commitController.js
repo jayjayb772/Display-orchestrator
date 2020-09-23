@@ -17,10 +17,9 @@ const commitController = express.Router()
  */
 commitController.post('/push-event', (req, res) => {
     parseMessage(req.body).then(discordRes=>{
-        res.send().ok;
+        res.send(discordRes).ok;
     }).catch(err=>{
-        res.status(err.status);
-        res.send();
+        res.send(err).error();
     });
     debuglog("push event")
 
