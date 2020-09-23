@@ -11,6 +11,7 @@ async function parseMessage(body) {
                     "color": 16711680
                 }]
             })
+
             let options = {
                 "headers": {
                     "content-type": "application/json"
