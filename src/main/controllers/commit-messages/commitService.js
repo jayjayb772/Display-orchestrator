@@ -3,7 +3,7 @@ const request = require('request')
 async function parseMessage(body) {
             console.log(body)
             let message = JSON.stringify({
-                "content": "New Commit",
+                "content": `New Commit in ${body.repository.name}`,
                 "embed": [{
                     "title": `${body.commits[0].message}`,
                     "description": `Modified Repo: ${body.repository.name}`,
