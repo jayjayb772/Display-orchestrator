@@ -13,6 +13,7 @@ const googleHomeController = require("./src/main/controllers/GoogleHome/googleHo
 const CTAController = require("./src/main/controllers/CTA/CTAController");
 const weatherController = require("./src/main/controllers/Weather/weatherController");
 const sockjs = require('sockjs');
+const commitController = require("./src/main/controllers/commit-messages/commitController");
 //const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
 const options = {
     definition: {
@@ -55,6 +56,7 @@ app.use('/discord', discordController)
 app.use('/cta', CTAController)
 app.use('/google-home', googleHomeController)
 app.use('/weather', weatherController)
+app.use('/commit', commitController)
 //app.use('/display-chat', displayChatController)
 
 
