@@ -5,10 +5,10 @@ async function parseMessage(body) {
             let message = JSON.stringify({
                 "content": "New Commit",
                 "embed": [{
-                    'title': `${body.commits[0].message}`,
-                    'description': `Modified Repo: ${body.repository.name}`,
-                    'url': `${body.html_url}`,
-                    'color': "#FF0000"
+                    "title": `${body.commits[0].message}`,
+                    "description": `Modified Repo: ${body.repository.name}`,
+                    "url": `${body.html_url}`,
+                    "color": 16711680
                 }]
             })
 
