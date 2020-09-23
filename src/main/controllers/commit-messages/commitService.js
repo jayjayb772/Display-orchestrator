@@ -7,13 +7,21 @@ function parseMessage(body) {
         headers: {
             "Content-type": "application/json"
         },
-        content: JSON.stringify({
-            embed: {
+        body: JSON.stringify({
+            embeds: [{
                 'title': `${body.commits[0].message}`,
                 'description': `Modified Repo: ${body.repository.name}`,
                 'url': `${body.html_url}`,
                 'color': "#FF0000"
-            }
+            }]
+        }),
+        content: JSON.stringify({
+            embeds: [{
+                'title': `${body.commits[0].message}`,
+                'description': `Modified Repo: ${body.repository.name}`,
+                'url': `${body.html_url}`,
+                'color': "#FF0000"
+            }]
         })
     }
 
