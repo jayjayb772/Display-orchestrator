@@ -23,7 +23,7 @@ echo.on('connection', function(conn) {
 
     conn.on('close', function() {
         console.log(`clients length = ${clients.length}`)
-        clients = clients.filter(conn => conn.readyState <=1)
+        clients = clients.filter(conn => conn.readyState >1)
         console.log(`clients length = ${clients.length}`)
     });
 });
