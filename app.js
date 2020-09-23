@@ -50,12 +50,11 @@ app.get('/', (req, res) =>{
     debuglog("HOME")
     res.send("Hello World!");
 })
-
-app.use('/messaging-service', messagingServiceController)
-app.use('/discord', discordController)
 app.use('/cta', CTAController)
-app.use('/google-home', googleHomeController)
+app.use('/discord', discordController)
 app.use('/weather', weatherController)
+app.use('/messaging-service', messagingServiceController)
+app.use('/google-home', googleHomeController)
 app.use('/commit', commitController)
 //app.use('/display-chat', displayChatController)
 
