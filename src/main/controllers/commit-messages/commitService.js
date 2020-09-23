@@ -8,21 +8,12 @@ async function parseMessage(bodyIn) {
             console.log(body)
             let message = {}
             let options = {
-                headers: {
+                "headers": {
                     "Content-type": "application/json"
                 },
-                body: {
-                    content: "New Commit",
-                    embeds: [{
-                        'title': `${body.commits[0].message}`,
-                        'description': `Modified Repo: ${body.repository.name}`,
-                        'url': `${body.html_url}`,
-                        'color': "#FF0000"
-                    }]
-                },
-                content: {
-                    content: "New Commit",
-                    embeds: [{
+                "body": {
+                    "content": "New Commit",
+                    "embeds": [{
                         'title': `${body.commits[0].message}`,
                         'description': `Modified Repo: ${body.repository.name}`,
                         'url': `${body.html_url}`,
