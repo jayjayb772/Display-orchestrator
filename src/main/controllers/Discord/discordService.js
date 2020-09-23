@@ -76,7 +76,7 @@ function determineEmbeds(body){
 }
 
 async function commitMessage(body) {
-    console.log(body)
+    //console.log(body)
 
     let embeds = determineEmbeds(body);
     let message = JSON.stringify({
@@ -91,7 +91,7 @@ async function commitMessage(body) {
     }
 
     request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res) => {
-        console.log(res)
+        //console.log(res)
         return res
     })
 
@@ -101,8 +101,6 @@ async function commitMessage(body) {
 
 //region sendErrors
 async function sendError(body) {
-    console.log(body)
-
     let embed = makeEmbed("ERROR",JSON.stringify(body),16711680);
     let message = JSON.stringify({
         "content": `Display board error`,
@@ -116,7 +114,6 @@ async function sendError(body) {
     }
 
     request.post(`${process.env.DISCORD_ERROR_URL}`, options, (err, res) => {
-        console.log(res)
         return res
     })
 }

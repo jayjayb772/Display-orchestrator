@@ -24,8 +24,8 @@ discordController.get('/', (req, res) => {
 
 discordController.post('/send-message', async (req, res) => {
     try{
-        debuglog("discordController home")
-        debuglog(req.body)
+        //debuglog("discordController home")
+        //debuglog(req.body)
         sendDiscordMessage(req.body).then((mRes)=>{
             res.statusCode = mRes.statusCode
             res.send()
