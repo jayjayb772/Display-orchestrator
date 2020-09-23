@@ -13,8 +13,9 @@ const googleHomeController = require("./src/main/controllers/GoogleHome/googleHo
 const CTAController = require("./src/main/controllers/CTA/CTAController");
 const weatherController = require("./src/main/controllers/Weather/weatherController");
 const sockjs = require('sockjs');
+const cors = require('cors')
 //const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
-const options = {
+const swagoptions = {
     definition: {
         openapi: '3.0.0', // Specification (optional, defaults to swagger: '2.0')
         info: {
@@ -23,13 +24,13 @@ const options = {
         },
     },
     // Path to the API docs
-    apis: ['./src/main/zzz-template/*.js'],
+    apis: ['./src/main/*.js'],
 };
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerSpec = swaggerJSDoc(swagoptions);
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(cors())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 /**
