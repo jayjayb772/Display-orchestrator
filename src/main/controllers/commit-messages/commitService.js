@@ -10,6 +10,9 @@ function parseMessage(body){
         }
     }
     let options = {
+        headers:{
+            "Content-type":"application/json"
+        },
         body:JSON.stringify(message)
     }
 
