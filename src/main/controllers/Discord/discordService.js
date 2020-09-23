@@ -81,7 +81,7 @@ async function commitMessage(body) {
     let embeds = determineEmbeds(body);
     let message = JSON.stringify({
         "content": `New Commit in ${body.repository.name}`,
-        "embeds": [embeds]
+        "embeds": embeds
     })
     let options = {
         "headers": {
@@ -103,10 +103,10 @@ async function commitMessage(body) {
 async function sendError(body) {
     console.log(body)
 
-    let embeds = makeEmbed("ERROR",body,16711680);
+    let embed = makeEmbed("ERROR",JSON.stringify(body),16711680);
     let message = JSON.stringify({
         "content": `Display board error`,
-        "embeds": embeds
+        "embeds": [embed]
     })
     let options = {
         "headers": {
