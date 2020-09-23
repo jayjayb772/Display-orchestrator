@@ -9,7 +9,7 @@ async function parseMessage(body) {
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify({
+                body: {
                     content: "New Commit",
                     embeds: [{
                         'title': `${body.commits[0].message}`,
@@ -17,8 +17,8 @@ async function parseMessage(body) {
                         'url': `${body.html_url}`,
                         'color': "#FF0000"
                     }]
-                }),
-                content: JSON.stringify({
+                },
+                content: {
                     content: "New Commit",
                     embeds: [{
                         'title': `${body.commits[0].message}`,
@@ -26,7 +26,7 @@ async function parseMessage(body) {
                         'url': `${body.html_url}`,
                         'color': "#FF0000"
                     }]
-                })
+                }
             }
 
             request.post(`${process.env.DISCORD_COMMIT_URL}`, options, (err, res) => {
