@@ -7,7 +7,7 @@ async function parseMessage(body) {
                 "embeds": [{
                     "title": `${body.commits[0].message}`,
                     "description": `Modified Repo: ${body.repository.name}`,
-                    "url": `${body.repository.html_url}`,
+                    "url": `${body.repository.url}`,
                     "color": 16711680
                 }]
             })
