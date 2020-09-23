@@ -1,7 +1,8 @@
 const request = require('request')
 
 async function parseMessage(bodyIn) {
-    let body = JSON.parse(bodyIn)
+    let body = await JSON.parse(bodyIn)
+    console.log(bodyIn)
     return new Promise(await ((resolve, reject) => {
         try {
             console.log(body)
