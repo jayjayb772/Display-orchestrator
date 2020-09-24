@@ -7,7 +7,7 @@ echo.on('connection', function(conn) {
     //console.log("New connection")
     //console.log(conn)
     conn.on('data', function(message) {
-        if(message!== "test" && message!== "stay alive" && message!== "display open test"){
+        if(message!== "test" && message!== "stay alive" && message!== "display open test" && message !=="stay alive-discordBot"){
         clients.forEach(c=>{
             if(c.readyState === 1) {
                 c.write(message)
