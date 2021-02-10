@@ -1,10 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const controller = require('./src/main/controllers/zzz-template/controller')
 const messagingServiceController = require("./src/main/controllers/MessagingService/messagingServiceController")
 const app = express();
 const {debuglog} = require('./src/main/util/debugCommands');
-const ENV = process.env.ENV;
 const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
@@ -31,7 +29,7 @@ const swaggerSpec = swaggerJSDoc(swagoptions);
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+
 
 /**
  * @swagger
@@ -50,6 +48,7 @@ app.get('/', (req, res) =>{
     debuglog("HOME")
     res.send("Hello World!");
 })
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 app.use('/cta', CTAController)
 app.use('/discord', discordController)
 app.use('/weather', weatherController)

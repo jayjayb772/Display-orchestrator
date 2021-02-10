@@ -1,8 +1,8 @@
 const express = require('express');
 const sockjs = require('sockjs');
 let clients=[]
-const echo = sockjs.createServer({ prefix:'/websocket'});
-echo.on('connection', function(conn) {
+const socket = sockjs.createServer({ prefix:'/websocket'});
+socket.on('connection', function(conn) {
     clients.push(conn)
     //console.log("New connection")
     //console.log(conn)
@@ -32,4 +32,4 @@ echo.on('connection', function(conn) {
 });
 
 
-module.exports = echo;
+module.exports = socket;

@@ -15,7 +15,7 @@ function sendSingleText(textBody, message, resolve, reject) {
         "to": textBody.to,
         "message": message
     })
-    let options = options(body)
+    let options = build_options(body)
     console.log(options)
 
     let uri = url()
@@ -37,7 +37,7 @@ function sendMultipleTexts(relationship, message, resolve, reject) {
         "relationship": relationship,
         "message": message
     })
-    let options = options(body)
+    let options = build_options(body)
     console.log(options)
 
     let uri = url()
@@ -51,7 +51,7 @@ function sendMultipleTexts(relationship, message, resolve, reject) {
     })
 }
 
-function options(body) {
+function build_options(body) {
     return {
         "headers": {
             "content-type": "application/json"

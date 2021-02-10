@@ -26,7 +26,6 @@ async function sendDiscordMessage(reqBody, resA){
             resolve(res);
         })
     }))
-    return;
 }
 
 //region commit message push
