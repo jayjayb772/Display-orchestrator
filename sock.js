@@ -1,4 +1,3 @@
-const express = require('express');
 const sockjs = require('sockjs');
 let clients=[]
 const socket = sockjs.createServer({ prefix:'/websocket'});

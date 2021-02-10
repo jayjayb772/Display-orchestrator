@@ -10,7 +10,6 @@ const discordController = require("./src/main/controllers/Discord/discordControl
 const googleHomeController = require("./src/main/controllers/GoogleHome/googleHomeController");
 const CTAController = require("./src/main/controllers/CTA/CTAController");
 const weatherController = require("./src/main/controllers/Weather/weatherController");
-const sockjs = require('sockjs');
 const cors = require('cors')
 //const displayChatController = require("./src/main/controllers/SendBird/displayChatController");
 const swagoptions = {
